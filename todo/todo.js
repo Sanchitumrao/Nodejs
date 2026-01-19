@@ -25,6 +25,16 @@ const listTasks = () => {
     tasks.forEach((task,index) => {console.log(`${index + 1}. ${task.task}`);});
         
 }
+const removeTask = (index) => {
+    const tasks = loadTasks();
+    if (index > 0 && index <= tasks.length){
+        const removed = tasks.splice(index - 1, 1);
+        saveTasks(tasks);
+        console.log(`Removed task: "${removed[0].task}"`);
+    } else {
+        console.log('Invalid task number.');
+    }
+}
 
 const command = process.argv[2];
 const argument = process.argv[3];
